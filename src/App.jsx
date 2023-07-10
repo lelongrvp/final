@@ -1,91 +1,74 @@
 import "./App.css";
-import { Menu, Layout, Typography, Button, Space } from "antd";
+import { Menu, Layout, Typography, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
   HomeOutlined,
   CalculatorOutlined,
   ClockCircleOutlined,
-  PlaySquareOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  InsuranceOutlined,
+  SoundOutlined,
+  CloudOutlined,
+  PlaySquareOutlined,
 } from "@ant-design/icons";
 import MyContent from "./Content";
-import ChessLogo from "./assets/Chess_plt45.svg";
 import { useState } from "react";
 const { Footer, Header, Sider, Content } = Layout;
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 const App = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [selected, setSelected] = useState("");
+  const [theme, setTheme] = useState("light");
   const handleMenuClick = ({ key }) => {
     setSelected(key);
     navigate(key);
   };
 
-  let title = "Title";
-  if (selected === "/chessboard") {
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+  let title = "Home";
+  if (selected === "/home") {
+    title = "Home";
+  } else if (selected === "/chessboard") {
     title = "Chessboard";
   } else if (selected === "/calculator") {
     title = "Calculator";
   } else if (selected === "/pomodoro") {
     title = "Pomodoro Clock";
+  } else if (selected === "/weather") {
+    title = "Weather";
+  } else if (selected === "/random-quote-generator") {
+    title = "Quote of the day";
   } else if (selected === "/movie") {
-    title = "Movie Info";
+    title = "Movie";
   }
 
   return (
     <Layout>
       <Layout
         style={{
-          minHeight: "calc(100vh - 64px - 70px)",
+          minHeight: "calc(100vh - 70px)",
         }}
       >
-        <Sider theme="dark" collapsible collapsed={collapsed}>
-          <Space>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={
-                collapsed
-                  ? {
-                      fontSize: "16px",
-                      width: "100%",
-                      marginTop: 10,
-                      marginLeft: 18,
-                      color: "white",
-                    }
-                  : {
-                      fontSize: "16px",
-                      width: "100%",
-                      marginTop: 10,
-                      marginLeft: 8,
-                      color: "white",
-                    }
-              }
-            />
-            <Text hidden={collapsed ? true : false} style={{ color: "white" }}>
-              Ultimate App
-            </Text>
-          </Space>
+        <Sider theme={theme} collapsed={collapsed}>
           <Menu
-            theme="dark"
+            theme={theme}
             onClick={handleMenuClick}
             items={[
               {
                 label: "Home",
-                key: "/",
+                key: "/home",
                 icon: <HomeOutlined />,
               },
               {
                 label: "Chessboard",
                 key: "/chessboard",
-                icon: (
-                  <img src={ChessLogo} alt="ChessLogo" width={14} height={14} />
-                ),
+                icon: <InsuranceOutlined />,
               },
               {
                 label: "Calculator",
@@ -98,21 +81,140 @@ const App = () => {
                 icon: <ClockCircleOutlined />,
               },
               {
-                label: "Movie info",
+                label: "Random quote generator",
+                key: "/random-quote-generator",
+                icon: <SoundOutlined />,
+              },
+              {
+                label: "Weather",
+                key: "/weather",
+                icon: <CloudOutlined />,
+              },
+              {
+                label: "Movie",
                 key: "/movie",
                 icon: <PlaySquareOutlined />,
               },
             ]}
           ></Menu>
         </Sider>
-        <Content style={{ paddingLeft: 20 }}>
-          <Header style={{ background: "white" }}>
-            <Text style={{ fontSize: "24px" }}>{title}</Text>
+        <Content>
+          <Header
+            style={
+              theme === "light"
+                ? {
+                    background: "white",
+                    paddingInline: 0,
+                    borderBottom: "1px solid #cecece",
+                  }
+                : {
+                    background: "#001529",
+                    paddingInline: 0,
+                  }
+            }
+          >
+            <div style={{ display: "flex", padding: 10 }}>
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={
+                  theme == "light"
+                    ? {
+                        fontSize: "16px",
+                        width: "fit-content",
+                        marginRight: 20,
+                        color: "black",
+                      }
+                    : {
+                        fontSize: "16px",
+                        width: "fit-content",
+                        marginRight: 20,
+                        color: "white",
+                      }
+                }
+              />
+              <Title
+                style={
+                  theme == "light"
+                    ? {
+                        fontSize: "32px",
+                        flex: 1,
+                        color: "black",
+                        cursor: "pointer",
+                        textTransform: "uppercase",
+                      }
+                    : {
+                        fontSize: "32px",
+                        flex: 1,
+                        color: "white",
+                        cursor: "pointer",
+                        textTransform: "uppercase",
+                      }
+                }
+                onClick={() => {
+                  refreshPage();
+                }}
+              >
+                Ultimate App
+              </Title>
+              <Button
+                onClick={() => {
+                  theme == "light" ? setTheme("dark") : setTheme("light");
+                }}
+                style={
+                  theme == "light"
+                    ? {
+                        width: "6em",
+                        padding: 0,
+                        margin: 0,
+                        justifyContent: "center",
+                        borderRadius: "10px",
+                      }
+                    : {
+                        width: "6em",
+                        padding: 0,
+                        margin: 0,
+                        justifyContent: "center",
+                        borderRadius: "10px",
+                        background: "#00213f",
+                        color: "white",
+                        border: "none",
+                      }
+                }
+              >
+                {theme == "light" ? "Light" : "Dark"}
+              </Button>
+            </div>
           </Header>
+          <Text
+            style={{
+              background: "#fff",
+              display: "inline-block",
+              width: "100vw",
+              padding: 20,
+              textTransform: "uppercase",
+              fontSize: 24,
+              fontWeight: "bold",
+            }}
+          >
+            {title}
+          </Text>
           <MyContent />
         </Content>
       </Layout>
-      <Footer style={{ textAlign: "center", background: "white" }}>
+      <Footer
+        style={
+          theme == "light"
+            ? {
+                textAlign: "center",
+                background: "white",
+                color: "black",
+                borderTop: "1px solid #e8e8e8",
+              }
+            : { textAlign: "center", background: "#001529", color: "white" }
+        }
+      >
         Copyright @2023 by Le Duc Long
       </Footer>
     </Layout>

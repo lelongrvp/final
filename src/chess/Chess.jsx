@@ -2,7 +2,6 @@ import { useState } from "react";
 import ChessBoard from "./ChessBoard";
 import "./Chess.css";
 import { Button, ColorPicker, Input, Space } from "antd";
-import Title from "antd/es/typography/Title";
 
 const Chess = () => {
   const [size, setSize] = useState(8);
@@ -15,7 +14,7 @@ const Chess = () => {
   };
 
   return (
-    <div className="App" style={{ padding: 30 }}>
+    <div className="App" style={{ paddingLeft: 10 }}>
       <Space direction="vertical">
         <Input
           style={{ width: "400px" }}
@@ -49,6 +48,13 @@ const Chess = () => {
           }}
         >
           Switch
+        </Button>
+        <Button
+          onClick={() => {
+            setSize(8);
+          }}
+        >
+          Reset
         </Button>
       </Space>
       <div>

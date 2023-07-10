@@ -14,7 +14,7 @@ const Settings = (props) => {
           max="60"
           value={props.workTime}
           onChange={props.onWorkTimeChange}
-          style={{ width: 400, marginLeft: 23 }}
+          style={{ width: "fit-content", marginLeft: 13, textAlign: "center" }}
         />
       </Space>
       <Space>
@@ -26,7 +26,7 @@ const Settings = (props) => {
           max="60"
           value={props.restTime}
           onChange={props.onRestTimeChange}
-          style={{ width: 400, marginLeft: 30 }}
+          style={{ width: "fit-content", marginLeft: 20, textAlign: "center" }}
         />
       </Space>
     </Space>

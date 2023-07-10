@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ant-input-affix-wrapper {
+  border: 1px solid black;
+}
+
+.ant-card {
+  width: 300px;
+  border: 1px solid black;
+}
+.ant-card-head {
+  border-bottom: 1px solid black;
+}
