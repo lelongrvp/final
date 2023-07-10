@@ -3,7 +3,7 @@ import { Button, Card, Input, Space, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 const WeatherCard = () => {
   const apiKey = "40b2f645425cab5c095dd71353f04753";
@@ -61,10 +61,15 @@ const WeatherCard = () => {
           prefix={<SearchOutlined />}
         />
         <Button onClick={handleSearch}>Search</Button>
-        <Card>
-          {weatherData ? (
+        {weatherData ? (
+          <Card
+            title={weatherData.name}
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              border: "none",
+            }}
+          >
             <div>
-              <Title>{weatherData.name}</Title>
               <div>
                 <Text>Temparature: {weatherData.main.temp}</Text>
               </div>
@@ -72,10 +77,10 @@ const WeatherCard = () => {
                 <Text>Description: {weatherData.weather[0].description}</Text>
               </div>
             </div>
-          ) : (
-            <Text>Loading....</Text>
-          )}
-        </Card>
+          </Card>
+        ) : (
+          <Text>Loading....</Text>
+        )}
       </Space>
     </div>
   );

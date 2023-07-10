@@ -28,7 +28,7 @@ const MovieCard = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await axios.get("https://api.themoviedb.org/3/movie/550", {
+        const res = await axios.get("https://api.themoviedb.org/3/movie/20", {
           params: {
             api_key: apiKey,
           },
