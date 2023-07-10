@@ -8,7 +8,6 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   InsuranceOutlined,
-  SoundOutlined,
   CloudOutlined,
   PlaySquareOutlined,
 } from "@ant-design/icons";
@@ -42,8 +41,6 @@ const App = () => {
     title = "Pomodoro Clock";
   } else if (selected === "/weather") {
     title = "Weather";
-  } else if (selected === "/random-quote-generator") {
-    title = "Quote of the day";
   } else if (selected === "/movie") {
     title = "Movie";
   }
@@ -79,11 +76,6 @@ const App = () => {
                 label: "Pomodoro clock",
                 key: "/pomodoro",
                 icon: <ClockCircleOutlined />,
-              },
-              {
-                label: "Random quote generator",
-                key: "/random-quote-generator",
-                icon: <SoundOutlined />,
               },
               {
                 label: "Weather",
