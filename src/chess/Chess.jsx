@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChessBoard from "./ChessBoard";
 import "./Chess.css";
-import { Button, ColorPicker, Input, Space } from "antd";
+import { Button, Input, Space } from "antd";
 
 const Chess = () => {
   const [size, setSize] = useState(8);
@@ -27,19 +27,21 @@ const Chess = () => {
           }}
         />
         <Space direction="horizontal">
-          <ColorPicker
+          <input
+            type="color"
             defaultValue={black}
             onChange={(e) => {
-              console.log(e.target.value);
               setBlack(e.target.value);
             }}
+            style={{ width: 40, height: 40 }}
           />
-          <ColorPicker
+          <input
+            type="color"
             defaultValue={white}
             onChange={(e) => {
-              console.log(e.target.value);
               setWhite(e.target.value);
             }}
+            style={{ width: 40, height: 40 }}
           />
         </Space>
         <Button

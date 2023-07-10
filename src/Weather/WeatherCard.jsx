@@ -73,7 +73,7 @@ const WeatherCard = () => {
               </div>
             </div>
           ) : (
-            <Text>No data found</Text>
+            <Text>Loading....</Text>
           )}
         </Card>
       </Space>
