@@ -15,7 +15,7 @@ const MovieCard = () => {
     const fetchMovie = async () => {
       try {
         const res = await axios.get(
-          `http://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
+          `https://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
         );
         const data = res.data;
         if (data.Search) {
@@ -33,7 +33,7 @@ const MovieCard = () => {
     if (searchQuery.trim() !== "") {
       try {
         const res = await axios.get(
-          `http://www.omdbapi.com/?s=${searchQuery}&type=movie&apikey=${apiKey}`
+          `https://www.omdbapi.com/?s=${searchQuery}&type=movie&apikey=${apiKey}`
         );
         const data = res.data;
         if (data.Search) {
@@ -46,7 +46,7 @@ const MovieCard = () => {
     } else {
       try {
         const res = await axios.get(
-          `http://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
+          `https://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
         );
         const data = res.data;
         if (data.Search) {
