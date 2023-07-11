@@ -3,84 +3,103 @@ import { Button, Card, Image, Input, Space, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const MovieCard = () => {
-  const apiKey = "85788cd48e2db9876613e03b8bca993d";
+  const apiKey = "648e84d5";
 
-  const [movieData, setMovieData] = useState(null);
+  const [movieData, setMovieData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = async () => {
-    try {
-      const res = await axios.get("https://api.themoviedb.org/3/search/movie", {
-        params: {
-          api_key: apiKey,
-          query: searchQuery || "IT",
-        },
-      });
-      setSearchQuery(res.data.results[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await axios.get("https://api.themoviedb.org/3/movie/20", {
-          params: {
-            api_key: apiKey,
-          },
-        });
-        setMovieData(res.data);
+        const res = await axios.get(
+          `http://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
+        );
+        const data = res.data;
+        if (data.Search) {
+          console.log(data.Search);
+          setMovieData(data.Search);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     fetchMovie();
-  }, [searchQuery]);
+  }, []);
 
+  const handleSearch = async () => {
+    if (searchQuery.trim() !== "") {
+      try {
+        const res = await axios.get(
+          `http://www.omdbapi.com/?s=${searchQuery}&type=movie&apikey=${apiKey}`
+        );
+        const data = res.data;
+        if (data.Search) {
+          console.log(data.Search);
+          setMovieData(data.Search);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const res = await axios.get(
+          `http://www.omdbapi.com/?s=popular&type=movie&apikey=${apiKey}`
+        );
+        const data = res.data;
+        if (data.Search) {
+          setMovieData(data.Search);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
-    <div>
+    <Space direction="vertical">
+      <Input
+        size="small"
+        type="text"
+        style={{ width: 300, marginBottom: 20 }}
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+        placeholder="Your movie title goes here"
+        prefix={<SearchOutlined />}
+      ></Input>
+      <Button onClick={handleSearch}>Search</Button>
       <Space direction="horizontal">
-        <Input
-          size="small"
-          placeholder="Your movie name goes here"
-          prefix={<SearchOutlined />}
-          style={{ width: 300, marginBottom: 20 }}
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-        />
-        <Button onClick={handleSearch}>Search</Button>
+        {movieData.map((movie) => (
+          <Card
+            key={movie.imdbID}
+            title={movie.Title}
+            cover={
+              <Image
+                src={movie.Poster}
+                style={{
+                  height: 200,
+                  objectFit: "cover",
+                  padding: 10,
+                }}
+              />
+            }
+            style={{
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              border: "none",
+            }}
+          >
+            <Space direction="vertical">
+              <Text>
+                <b>Release:</b> {movie.Year}
+              </Text>
+            </Space>
+          </Card>
+        ))}
       </Space>
-      {movieData && (
-        <Card
-          title={movieData.title}
-          cover={
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
-              style={{
-                height: 100,
-                objectFit: "cover",
-                padding: 10,
-              }}
-            />
-          }
-          style={{
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            border: "none",
-          }}
-        >
-          <div>
-            <Title level={5}>Overview:</Title>
-            <Text>{movieData.overview}</Text>
-          </div>
-        </Card>
-      )}
-    </div>
+    </Space>
   );
 };
 
