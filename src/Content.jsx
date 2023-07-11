@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Calculator from "./calculator/Calculator";
 import Chess from "./chess/Chess";
@@ -16,6 +16,7 @@ const Content = () => {
       }}
     >
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />}></Route>
         <Route path="/chessboard" element={<Chess />}></Route>
         <Route path="/calculator" element={<Calculator />}></Route>
