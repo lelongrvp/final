@@ -19,6 +19,7 @@ const WeatherCard = () => {
           params: {
             q: searchQuery,
             appid: apiKey,
+            units: "metric",
           },
         }
       );
@@ -37,6 +38,7 @@ const WeatherCard = () => {
             params: {
               q: searchQuery || "Hanoi",
               appid: apiKey,
+              units: "metric",
             },
           }
         );
@@ -71,7 +73,13 @@ const WeatherCard = () => {
           >
             <div>
               <div>
-                <Text>Temparature: {weatherData.main.temp}</Text>
+                <Text>{weatherData.sys.country}</Text>
+              </div>
+              <div>
+                <Text>Temparature: {weatherData.main.temp}°C</Text>
+              </div>
+              <div>
+                <Text>Humidity: {weatherData.main.humidity}%</Text>
               </div>
               <div>
                 <Text>Description: {weatherData.weather[0].description}</Text>

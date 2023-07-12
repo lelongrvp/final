@@ -54,6 +54,8 @@ const Chess = () => {
         <Button
           onClick={() => {
             setSize(8);
+            setBlack("#000");
+            setWhite("#fff");
           }}
         >
           Reset
