@@ -73,7 +73,7 @@ const WeatherCard = () => {
           >
             <div>
               <div>
-                <Text>{weatherData.sys.country}</Text>
+                <Text>Location: {weatherData.sys.country}</Text>
               </div>
               <div>
                 <Text>Temparature: {weatherData.main.temp}°C</Text>
