@@ -59,11 +59,11 @@ const MovieCard = () => {
   };
   return (
     <Space direction="vertical">
-      <Space>
+      <Space direction="vertical">
         <Input
           size="small"
           type="text"
-          style={{ width: 300, marginBottom: 20 }}
+          style={{ width: 300, marginBottom: 10 }}
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);

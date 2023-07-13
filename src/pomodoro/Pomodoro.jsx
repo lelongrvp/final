@@ -60,6 +60,7 @@ const Pomodoro = () => {
         borderRadius: 10,
         width: "fit-content",
         textAlign: "center",
+        marginLeft: 20,
       }}
     >
       <Timer time={time} />

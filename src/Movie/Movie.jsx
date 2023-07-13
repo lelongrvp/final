@@ -2,7 +2,7 @@ import MovieCard from "./MovieCard";
 
 const Movie = () => {
   return (
-    <div style={{ paddingTop: 20, paddingLeft: 50, paddingBottom: 30 }}>
+    <div style={{ marginLeft: 20 }}>
       <MovieCard />
     </div>
   );

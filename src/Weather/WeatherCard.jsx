@@ -51,46 +51,44 @@ const WeatherCard = () => {
   }, [searchQuery]);
 
   return (
-    <div style={{ marginLeft: 20 }}>
-      <Space direction="vertical">
-        <Input
-          size="medium"
-          placeholder="Type your city"
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
+    <Space direction="vertical">
+      <Input
+        size="medium"
+        placeholder="Type your city"
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+        prefix={<SearchOutlined />}
+      />
+      <Button onClick={handleSearch}>Search</Button>
+      {weatherData ? (
+        <Card
+          title={weatherData.name}
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            border: "none",
           }}
-          prefix={<SearchOutlined />}
-        />
-        <Button onClick={handleSearch}>Search</Button>
-        {weatherData ? (
-          <Card
-            title={weatherData.name}
-            style={{
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              border: "none",
-            }}
-          >
+        >
+          <div>
             <div>
-              <div>
-                <Text>Location: {weatherData.sys.country}</Text>
-              </div>
-              <div>
-                <Text>Temparature: {weatherData.main.temp}°C</Text>
-              </div>
-              <div>
-                <Text>Humidity: {weatherData.main.humidity}%</Text>
-              </div>
-              <div>
-                <Text>Description: {weatherData.weather[0].description}</Text>
-              </div>
+              <Text>Location: {weatherData.sys.country}</Text>
             </div>
-          </Card>
-        ) : (
-          <Text>Loading....</Text>
-        )}
-      </Space>
-    </div>
+            <div>
+              <Text>Temparature: {weatherData.main.temp}°C</Text>
+            </div>
+            <div>
+              <Text>Humidity: {weatherData.main.humidity}%</Text>
+            </div>
+            <div>
+              <Text>Description: {weatherData.weather[0].description}</Text>
+            </div>
+          </div>
+        </Card>
+      ) : (
+        <Text>Loading....</Text>
+      )}
+    </Space>
   );
 };
 
