@@ -21,7 +21,7 @@ const App = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [selected, setSelected] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const handleMenuClick = ({ key }) => {
     setSelected(key);
     navigate(key);
@@ -159,14 +159,14 @@ const App = () => {
                     ? {
                         width: "6em",
                         padding: 0,
-                        margin: 0,
+                        marginTop: 5,
                         justifyContent: "center",
                         borderRadius: "10px",
                       }
                     : {
                         width: "6em",
                         padding: 0,
-                        margin: 0,
+                        marginTop: 5,
                         justifyContent: "center",
                         borderRadius: "10px",
                         background: "#00213f",
