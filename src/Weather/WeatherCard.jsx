@@ -3,7 +3,7 @@ import { Button, Card, Input, Space, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const { Text } = Typography;
+const { Title, Text } = Typography;
 
 const WeatherCard = () => {
   const apiKey = "40b2f645425cab5c095dd71353f04753";
@@ -52,6 +52,7 @@ const WeatherCard = () => {
 
   return (
     <Space direction="vertical">
+      <Title>Weather App</Title>
       <Input
         size="medium"
         placeholder="Type your city"

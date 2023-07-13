@@ -3,7 +3,9 @@ import Timer from "./Timer";
 import Mode from "./Mode";
 import Settings from "./Settings";
 import Button from "./Buttons";
-import { Space } from "antd";
+import { Space, Typography } from "antd";
+
+const { Title } = Typography;
 
 const Pomodoro = () => {
   const [workTime, setWorkTime] = useState(10);
@@ -60,9 +62,12 @@ const Pomodoro = () => {
         borderRadius: 10,
         width: "fit-content",
         textAlign: "center",
+        padding: 20,
+        marginTop: 20,
         marginLeft: 20,
       }}
     >
+      <Title level={2}>Pomodoro Clock</Title>
       <Timer time={time} />
       <Mode mode={mode} />
       <Space direction="vertical">

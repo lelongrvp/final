@@ -3,7 +3,7 @@ import { Button, Card, Image, Input, Space, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 const MovieCard = () => {
   const apiKey = "648e84d5";
@@ -60,6 +60,9 @@ const MovieCard = () => {
   return (
     <Space direction="vertical">
       <Space direction="vertical">
+        <Title level={2} style={{ marginTop: 20 }}>
+          Movie App
+        </Title>
         <Input
           size="small"
           type="text"

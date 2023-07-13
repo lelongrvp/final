@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Calculator.css";
-import { Button, Input, Space } from "antd";
+import { Button, Input, Space, Typography } from "antd";
+
+const { Title } = Typography;
 
 const Calculator = () => {
   const [result, setResult] = useState("");
@@ -78,6 +80,7 @@ const Calculator = () => {
       className="wrapper"
       style={{
         padding: 20,
+        marginTop: 20,
         marginLeft: 20,
         boxShadow:
           "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
@@ -86,6 +89,7 @@ const Calculator = () => {
         height: "fit-content",
       }}
     >
+      <Title level={2}>Calculator</Title>
       <Space direction="vertical">
         <Input
           type="text"

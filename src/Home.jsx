@@ -1,5 +1,6 @@
 import { Image, Space, Typography } from "antd";
 import { ArrowDownOutlined, SmileOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -12,6 +13,7 @@ const Home = () => {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
+        marginTop: 20,
       }}
     >
       <Title
@@ -64,9 +66,12 @@ const Home = () => {
               A simple re-creation of a Chess game board, with default size of
               8x8
             </Text>
-            <Text type="link" style={{ cursor: "pointer", color: "#400de8" }}>
+            <Link
+              to="/chessboard"
+              style={{ cursor: "pointer", color: "#400de8" }}
+            >
               Learn More
-            </Text>
+            </Link>
           </Space>
         </div>
         <div
@@ -91,9 +96,12 @@ const Home = () => {
               A simple calculator, with basic functions, no scientific mode
               (yet)
             </Text>
-            <Text type="link" style={{ cursor: "pointer", color: "#400de8" }}>
+            <Link
+              to="/calculator"
+              style={{ cursor: "pointer", color: "#400de8" }}
+            >
               Learn More
-            </Text>
+            </Link>
           </Space>
         </div>
         <div
@@ -115,15 +123,15 @@ const Home = () => {
               style={{ borderRadius: 10, objectFit: "cover" }}
             />
             <Text>A simple Pomodoro timer</Text>
-            <Text
-              type="link"
+            <Link
+              to="/pomodoro"
               style={{
                 cursor: "pointer",
                 color: "#400de8",
               }}
             >
               Learn More
-            </Text>
+            </Link>
           </Space>
         </div>
         <div
@@ -147,9 +155,9 @@ const Home = () => {
             <Text>
               A function to get weather data by city. Using API from OpenWeather
             </Text>
-            <Text type="link" style={{ cursor: "pointer", color: "#400de8" }}>
+            <Link to="/weather" style={{ cursor: "pointer", color: "#400de8" }}>
               Learn More
-            </Text>
+            </Link>
           </Space>
         </div>
         <div
@@ -174,9 +182,9 @@ const Home = () => {
               A simple function to get data of movies that users search. Using
               API from OMDB
             </Text>
-            <Text type="link" style={{ cursor: "pointer", color: "#400de8" }}>
+            <Link to="/movie" style={{ cursor: "pointer", color: "#400de8" }}>
               Learn More
-            </Text>
+            </Link>
           </Space>
         </div>
       </Space>

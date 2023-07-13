@@ -16,33 +16,19 @@ import MyContent from "./Content";
 import { useState } from "react";
 import ScrollToTopButton from "./ScrollToTopButton";
 const { Footer, Header, Sider, Content } = Layout;
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 const App = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
-  const [selected, setSelected] = useState("");
   const [theme, setTheme] = useState("dark");
   const handleMenuClick = ({ key }) => {
-    setSelected(key);
     navigate(key);
   };
 
   const refreshPage = () => {
     window.location.reload(false);
   };
-  let title = "";
-  if (selected === "/chessboard") {
-    title = "Chessboard";
-  } else if (selected === "/calculator") {
-    title = "Calculator";
-  } else if (selected === "/pomodoro") {
-    title = "Pomodoro Clock";
-  } else if (selected === "/weather") {
-    title = "Weather";
-  } else if (selected === "/movie") {
-    title = "Movie";
-  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -213,20 +199,7 @@ const App = () => {
               </Button>
             </div>
           </Header>
-          <Text
-            style={{
-              background: "#fff",
-              display: "inline-block",
-              width: "100vw",
-              textTransform: "uppercase",
-              fontSize: 32,
-              fontWeight: "bold",
-              margin: 0,
-              padding: 20,
-            }}
-          >
-            {title}
-          </Text>
+
           <MyContent />
         </Content>
       </Layout>

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import ChessBoard from "./ChessBoard";
 import "./Chess.css";
-import { Button, Input, Space } from "antd";
+import { Button, Input, Space, Typography } from "antd";
+
+const { Title } = Typography;
 
 const Chess = () => {
   const [size, setSize] = useState(8);
@@ -16,6 +18,7 @@ const Chess = () => {
   return (
     <div className="chess" style={{ padding: 20 }}>
       <Space direction="vertical">
+        <Title level={2}>Chess Board</Title>
         <Input
           style={{ width: "400px" }}
           type="number"

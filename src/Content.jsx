@@ -10,7 +10,6 @@ const Content = () => {
   return (
     <div
       style={{
-        background: "white",
         height: "100%",
       }}
     >
