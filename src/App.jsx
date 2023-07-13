@@ -1,5 +1,5 @@
 import "./App.css";
-import { Menu, Layout, Typography, Button } from "antd";
+import { Menu, Layout, Typography, Button, Avatar, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
   HomeOutlined,
@@ -10,11 +10,12 @@ import {
   InsuranceOutlined,
   CloudOutlined,
   PlaySquareOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import MyContent from "./Content";
 import { useState } from "react";
+import ScrollToTopButton from "./ScrollToTopButton";
 const { Footer, Header, Sider, Content } = Layout;
-
 const { Text, Title } = Typography;
 
 const App = () => {
@@ -30,10 +31,8 @@ const App = () => {
   const refreshPage = () => {
     window.location.reload(false);
   };
-  let title = "Home";
-  if (selected === "/home") {
-    title = "Home";
-  } else if (selected === "/chessboard") {
+  let title = "";
+  if (selected === "/chessboard") {
     title = "Chessboard";
   } else if (selected === "/calculator") {
     title = "Calculator";
@@ -46,13 +45,43 @@ const App = () => {
   }
 
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Layout
         style={{
           minHeight: "calc(100vh - 70px)",
         }}
       >
-        <Sider theme={theme} collapsed={collapsed}>
+        <Sider
+          theme={theme}
+          collapsed={collapsed}
+          style={{ textAlign: "center", paddingTop: 20 }}
+        >
+          <Space direction="vertical" style={{ marginBottom: 20 }}>
+            <Avatar
+              icon={<UserOutlined />}
+              size={!collapsed ? 100 : 50}
+              style={{ background: "#f56a00" }}
+            />
+            {!collapsed ? (
+              <Title
+                level={3}
+                style={
+                  theme == "light" ? { color: "black" } : { color: "white" }
+                }
+              >
+                Lê Đức Long
+              </Title>
+            ) : (
+              <Title
+                level={3}
+                style={
+                  theme == "light" ? { color: "black" } : { color: "white" }
+                }
+              >
+                L
+              </Title>
+            )}
+          </Space>
           <Menu
             theme={theme}
             onClick={handleMenuClick}
@@ -88,6 +117,11 @@ const App = () => {
                 icon: <PlaySquareOutlined />,
               },
             ]}
+            style={{
+              textAlign: "left",
+              borderTop: "1px solid #cecece",
+              paddingTop: 20,
+            }}
           ></Menu>
         </Sider>
         <Content>
@@ -184,10 +218,11 @@ const App = () => {
               background: "#fff",
               display: "inline-block",
               width: "100vw",
-              padding: 20,
               textTransform: "uppercase",
-              fontSize: 24,
+              fontSize: 32,
               fontWeight: "bold",
+              margin: 0,
+              padding: 20,
             }}
           >
             {title}
@@ -200,14 +235,29 @@ const App = () => {
           theme == "light"
             ? {
                 textAlign: "center",
-                background: "white",
-                color: "black",
-                borderTop: "1px solid #e8e8e8",
+                background: "#fff",
+                height: 154,
               }
-            : { textAlign: "center", background: "#001529", color: "white" }
+            : {
+                textAlign: "center",
+                background: "#001529",
+                height: 154,
+              }
         }
       >
-        Copyright @2023 by Le Duc Long
+        <div style={{ display: "flex" }}>
+          <Title
+            level={3}
+            style={
+              theme == "light"
+                ? { marginTop: 38, color: "black", flex: 1 }
+                : { marginTop: 38, color: "white", flex: 1 }
+            }
+          >
+            Copyright @2023 by Le Duc Long
+          </Title>
+          <ScrollToTopButton />
+        </div>
       </Footer>
     </Layout>
   );

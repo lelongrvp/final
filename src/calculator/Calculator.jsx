@@ -74,7 +74,18 @@ const Calculator = () => {
     setResult(resultNumber);
   };
   return (
-    <div className="wrapper">
+    <div
+      className="wrapper"
+      style={{
+        padding: 20,
+        marginLeft: 20,
+        boxShadow:
+          "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
+        borderRadius: 10,
+        width: "fit-content",
+        height: "fit-content",
+      }}
+    >
       <Space direction="vertical">
         <Input
           type="text"

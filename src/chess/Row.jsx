@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Cells from "./Cell";
 import "./Row.css";
 

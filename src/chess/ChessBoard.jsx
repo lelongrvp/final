@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Row from "./Row";
 
 const ChessBoard = ({ size, black, white }) => {

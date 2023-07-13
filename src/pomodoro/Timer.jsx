@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Space } from "antd";
 
 const Timer = (props) => {

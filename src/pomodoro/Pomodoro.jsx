@@ -52,7 +52,16 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className="App">
+    <div
+      className="pomodoro-clock"
+      style={{
+        boxShadow:
+          "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px        ",
+        borderRadius: 10,
+        width: "fit-content",
+        textAlign: "center",
+      }}
+    >
       <Timer time={time} />
       <Mode mode={mode} />
       <Space direction="vertical">

@@ -14,7 +14,7 @@ const Chess = () => {
   };
 
   return (
-    <div className="App" style={{ paddingLeft: 10 }}>
+    <div className="chess" style={{ padding: 20 }}>
       <Space direction="vertical">
         <Input
           style={{ width: "400px" }}

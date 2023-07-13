@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./Cell.css";
 const Cells = ({ cellType, black, white }) => {

@@ -59,19 +59,27 @@ const MovieCard = () => {
   };
   return (
     <Space direction="vertical">
-      <Input
-        size="small"
-        type="text"
-        style={{ width: 300, marginBottom: 20 }}
-        value={searchQuery}
-        onChange={(e) => {
-          setSearchQuery(e.target.value);
+      <Space>
+        <Input
+          size="small"
+          type="text"
+          style={{ width: 300, marginBottom: 20 }}
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
+          placeholder="Your movie title goes here"
+          prefix={<SearchOutlined />}
+        ></Input>
+        <Button onClick={handleSearch}>Search</Button>
+      </Space>
+      <div
+        style={{
+          display: "grid",
+          gap: 30,
+          gridTemplateColumns: "auto auto auto auto",
         }}
-        placeholder="Your movie title goes here"
-        prefix={<SearchOutlined />}
-      ></Input>
-      <Button onClick={handleSearch}>Search</Button>
-      <Space direction="horizontal">
+      >
         {movieData.map((movie) => (
           <Card
             key={movie.imdbID}
@@ -98,7 +106,7 @@ const MovieCard = () => {
             </Space>
           </Card>
         ))}
-      </Space>
+      </div>
     </Space>
   );
 };

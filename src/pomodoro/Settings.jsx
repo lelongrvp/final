@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Input, Space, Typography } from "antd";
 
 const { Text } = Typography;
