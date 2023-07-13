@@ -1,2 +1,2 @@
-# ultimate-app
-- This is my practice project using Reactjs and Ant Design
+# Final project
+- This is the final project for front-end course during KITS 2023
