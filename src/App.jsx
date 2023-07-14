@@ -22,12 +22,13 @@ const App = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [theme, setTheme] = useState("dark");
-  const handleMenuClick = ({ key }) => {
-    navigate(key);
+
+  const handleLoginClick = () => {
+    navigate("/login");
   };
 
-  const refreshPage = () => {
-    window.location.reload(false);
+  const handleMenuClick = ({ key }) => {
+    navigate(key);
   };
 
   return (
@@ -164,12 +165,34 @@ const App = () => {
                         textTransform: "uppercase",
                       }
                 }
-                onClick={() => {
-                  refreshPage();
-                }}
               >
                 Ultimate App
               </Title>
+              <Button
+                onClick={handleLoginClick}
+                style={
+                  theme == "light"
+                    ? {
+                        width: "6em",
+                        padding: 0,
+                        marginTop: 5,
+                        justifyContent: "center",
+                        borderRadius: "10px",
+                      }
+                    : {
+                        width: "6em",
+                        padding: 0,
+                        marginTop: 5,
+                        justifyContent: "center",
+                        borderRadius: "10px",
+                        background: "#00213f",
+                        color: "white",
+                        border: "none",
+                      }
+                }
+              >
+                Login
+              </Button>
               <Button
                 onClick={() => {
                   theme == "light" ? setTheme("dark") : setTheme("light");
@@ -199,7 +222,6 @@ const App = () => {
               </Button>
             </div>
           </Header>
-
           <MyContent />
         </Content>
       </Layout>
