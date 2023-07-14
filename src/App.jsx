@@ -178,6 +178,7 @@ const App = () => {
                         marginTop: 5,
                         justifyContent: "center",
                         borderRadius: "10px",
+                        border: "1px solid black",
                       }
                     : {
                         width: "6em",
@@ -187,7 +188,7 @@ const App = () => {
                         borderRadius: "10px",
                         background: "#00213f",
                         color: "white",
-                        border: "none",
+                        border: "1px solid white",
                       }
                 }
               >
